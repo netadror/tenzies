@@ -46,6 +46,10 @@ function Main() {
 
     return (
         <main className="App-main">
+            <div className="main-text">
+                <h4>Get all ten of your dice to the same number</h4>
+                <p>After your first roll, select the number you are going with by clicking on the dice (this freezes it at its current value). Keep rolling until all dice show the same number</p>
+            </div>
             <div className='Die-container'>
                 {diceElements}
             </div>

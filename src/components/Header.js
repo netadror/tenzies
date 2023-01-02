@@ -1,4 +1,4 @@
-import logo from './images/bear.png'
+import logo from './images/dice.png'
 
 function Header() {
     return (
@@ -7,6 +7,7 @@ function Header() {
             <p>
                 Tenzies Game
             </p>
+            <img src={logo} className="App-logo" alt="logo" />
         </header>)
 
 }
