@@ -20,31 +20,33 @@ body {
 }
 
 .App-header {
-  min-height: 15vh;
+  min-height: 8vh;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: calc(15px + 2vmin);
   font-weight: 600;
-  color: rgb(97, 97, 97);
+  color: #0B2434;
 }
 
 .App-main {
-  background-color: #F5F5F5;
-  width: 600px;
-  height: 450px;
+  background-color: #f0e1e1;
+  width: 80vw;
+  height: 70vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   color: rgb(72, 72, 72);
   border-radius: 10px;
+  padding-bottom: 20px;
 }
 
 .main-text {
   font-size: 1.3rem;
   padding: 0px 20px;
   text-align: center;
+  width: 65vw;
 }
 
 .main-text>h4 {
@@ -59,7 +61,7 @@ body {
   display: grid;
   grid-template: auto auto / repeat(5, 1fr);
   gap: 20px;
-  padding: 25px;
+  padding-bottom: 15px;
 }
 
 .dice {
@@ -92,15 +94,15 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 50px;
-  width: 200px;
+  height: 6vh;
+  width: 30vw;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   cursor: pointer;
   background-color: #195174;
   color: white;
-  margin-top: 20px;
+  margin-top: 10px;
   font-size: 1.2rem;
 }
 
@@ -122,11 +124,51 @@ body {
   color: rgb(97, 97, 97);
   display: flex;
   justify-content: center;
-  padding-top: 20px;
-  height: 15vh;
+  padding-top: 15px;
+  height: 10vh;
+  font-size: 1rem;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 a {
   color: #eca9d6;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+
+  .Die-container {
+    grid-template: auto auto / repeat(4, 1fr);
+    align-items: center;
+    gap: 20px;
+  }
+
+  .main-text {
+    font-size: 16px;
+    padding: 0px 10px;
+  }
+
+  .main-text>h4 {
+    font-size: 18px;
+  }
+
+  .dice {
+    width: 40px;
+    height: 40px;
+  }
+
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .rollBtn {
+    width: 150px;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .rollBtn {
+    width: 150px;
+  }
 }
