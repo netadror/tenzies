@@ -67,7 +67,10 @@ function Main() {
 
     return (
         <main className="App-main">
-            {tenzies && <Confetti />}
+            {tenzies && <Confetti
+                width={1500}
+                height={600}
+            />}
             <div className="main-text">
                 <h4>Get all ten of your dice to the same number</h4>
                 <p>After your first roll, select the number you are going with by clicking on the dice. Keep rolling until all dice show the same number</p>
