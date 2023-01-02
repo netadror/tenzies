@@ -1,39 +1,60 @@
 import React from "react"
 import Die from "./Die"
 import { nanoid } from 'nanoid'
+import Confetti from 'react-confetti'
+
 
 function Main() {
+
+    const [dice, setDice] = React.useState(allNewDice())
+    const [tenzies, setTenzies] = React.useState(false)
 
     function getRandomInt(min, max) {
         min = Math.ceil(min);
         max = Math.floor(max);
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
+    function getNewDie() {
+        return {
+            value: getRandomInt(1, 6),
+            isHeld: false,
+            id: nanoid()
+        }
+    }
     function allNewDice() {
         const diceArray = []
         for (let i = 0; i < 10; i++) {
-            let randNum = getRandomInt(1, 6)
-            diceArray.push({
-                value: randNum,
-                isHeld: false,
-                id: nanoid()
-            })
+            diceArray.push(getNewDie())
         }
-        console.log(diceArray)
         return diceArray
     }
 
-    const [dice, setDice] = React.useState(allNewDice())
+    React.useEffect(() => {
+
+        const allHeldDice = dice.every(die => die.isHeld)
+        const firstValue = dice[0].value
+        const allSameValue = dice.every(die => die.value === firstValue)
+        if (allHeldDice && allSameValue) {
+            setTenzies(true)
+        }
+
+    }, [dice])
 
     function rollDice() {
-        setDice(allNewDice())
+        if (!tenzies) {
+            setDice(oldDice => oldDice.map(die => {
+                return die.isHeld ? die : getNewDie()
+            }))
+        } else {
+            setTenzies(false)
+            setDice(allNewDice())
+        }
+
     }
     function holdDice(id) {
         setDice(oldDice => oldDice.map(die => {
             return die.id === id ? { ...die, isHeld: !die.isHeld } : die
-
         }))
-
 
     }
     const diceElements = dice.map(die =>
@@ -46,6 +67,7 @@ function Main() {
 
     return (
         <main className="App-main">
+            {tenzies && <Confetti />}
             <div className="main-text">
                 <h4>Get all ten of your dice to the same number</h4>
                 <p>After your first roll, select the number you are going with by clicking on the dice (this freezes it at its current value). Keep rolling until all dice show the same number</p>
@@ -53,10 +75,9 @@ function Main() {
             <div className='Die-container'>
                 {diceElements}
             </div>
-            <button className="rollBtn" onClick={rollDice}>Roll Dice</button>
+            <button className="rollBtn" onClick={rollDice}>{tenzies ? "Restart" : "Roll Die"}</button>
         </main>
     )
-
 }
 
 export default Main
