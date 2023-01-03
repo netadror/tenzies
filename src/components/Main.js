@@ -4,7 +4,7 @@ import { nanoid } from 'nanoid'
 import Confetti from 'react-confetti'
 
 
-function Main() {
+function Main(props) {
 
     const [dice, setDice] = React.useState(allNewDice())
     const [tenzies, setTenzies] = React.useState(false)
@@ -66,7 +66,7 @@ function Main() {
         />)
 
     return (
-        <main className="App-main">
+        <main className={`App-main ${props.darkMode ? "dark" : ""}`}>
             {tenzies && <Confetti
                 width={1500}
                 height={600}

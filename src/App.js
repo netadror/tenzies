@@ -5,10 +5,14 @@ import Main from './components/Main.js'
 import Footer from './components/Footer.js'
 
 function App() {
+  const [darkMode, setDarkMode] = React.useState(true)
+  function toggleDarkMode() {
+    setDarkMode(prevMode => !prevMode)
+  }
   return (
     <React.StrictMode>
-      <Header />
-      <Main />
+      <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+      <Main darkMode={darkMode} />
       <Footer />
     </React.StrictMode>
   );
